@@ -1,0 +1,24 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/new_project.rpy", line 52, in script
+  File "game/new_project.rpy", line 64, in python
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "Z:\renpy-6.15.7-sdk\renpy\execution.py", line 288, in run
+    node.execute()
+  File "Z:\renpy-6.15.7-sdk\renpy\ast.py", line 718, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "Z:\renpy-6.15.7-sdk\renpy\python.py", line 1297, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "game/new_project.rpy", line 64, in <module>
+  File "c:\python27\lib\ntpath.py", line 97, in join
+    if path[-1] in "/\\":
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+Windows-7-6.1.7601-SP1
+Ren'Py 6.15.7.374
+Ren'Py Launcher 6.15.7.374

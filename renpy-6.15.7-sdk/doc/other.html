@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Other Functions &mdash; Ren&#39;Py Documentation</title>
+    <link rel="stylesheet" href="_static/screen.css" type="text/css" media="screen, projection"/>
+    <link rel="stylesheet" href="_static/renpydoc.css" type="text/css" media="print" />
+
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="_static/renpydoc.css" type="text/css" media="screen, projection"/>
+    <![endif]-->
+
+    <link rel="stylesheet" href="_static/renpydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6.15.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Ren&#39;Py Documentation" href="index.html" />
+    <link rel="next" title="Building Distributions" href="build.html" />
+    <link rel="prev" title="Creator-Defined Displayables" href="udd.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="build.html" title="Building Distributions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="udd.html" title="Creator-Defined Displayables"
+             accesskey="P">previous</a> |</li>
+
+        <li> <img src="_static/logo.png" width=19 height=21 align=center> 
+        <li> <a href="http://www.renpy.org/">Ren'Py Home</a> |
+        <li><a href="index.html">Ren&#39;Py Documentation</a></li> 
+      </ul>
+    </div>
+  <div class="container">
+  <div class="span4">
+    
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="udd.html"
+                        title="previous chapter">Creator-Defined Displayables</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="build.html"
+                        title="next chapter">Building Distributions</a></p>
+            <h4>Search</h4>
+            
+            <div id="cse-search-form" style="width: 100%;"></div>
+
+      <div class="copydata">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    <br>
+      </div>
+        </div>
+      </div>
+  
+  </div>
+  
+    
+    <div class="document span20 last">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="other-functions">
+<h1>Other Functions<a class="headerlink" href="#other-functions" title="Permalink to this headline">¶</a></h1>
+<p>We're in the process of migrating the documentation over to a new
+tool. As not every page has been migrated yet, this exists to document
+new functionality that has no other place to go.</p>
+<dl class="function">
+<dt id="renpy.call">
+<tt class="descclassname">renpy.</tt><tt class="descname">call</tt><big>(</big><em>label</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#renpy.call" title="Permalink to this definition">¶</a></dt>
+<dd><p>Causes the current Ren'Py statement to terminate, and a jump to a
+<cite>label</cite> to occur. When the jump returns, control will be passed
+to the statement following the current statement.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="renpy.clear_game_runtime">
+<tt class="descclassname">renpy.</tt><tt class="descname">clear_game_runtime</tt><big>(</big><big>)</big><a class="headerlink" href="#renpy.clear_game_runtime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the game runtime counter.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="renpy.focus_coordinates">
+<tt class="descclassname">renpy.</tt><tt class="descname">focus_coordinates</tt><big>(</big><big>)</big><a class="headerlink" href="#renpy.focus_coordinates" title="Permalink to this definition">¶</a></dt>
+<dd><p>This attempts to find the coordinates of the currently-focused
+displayable. If it can, it will return them as a (x, y, w, h)
+tuple. If not, it will return a (None, None, None, None) tuple.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="renpy.fsdecode">
+<tt class="descclassname">renpy.</tt><tt class="descname">fsdecode</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#renpy.fsdecode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts s from filesystem encoding to unicode.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="renpy.fsencode">
+<tt class="descclassname">renpy.</tt><tt class="descname">fsencode</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#renpy.fsencode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts s from unicode to the filesystem encoding.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="renpy.get_game_runtime">
+<tt class="descclassname">renpy.</tt><tt class="descname">get_game_runtime</tt><big>(</big><big>)</big><a class="headerlink" href="#renpy.get_game_runtime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the game runtime counter.</p>
+<p>The game runtime counter counts the number of seconds that have
+elapsed while waiting for user input in the top-level context.
+(It does not count time spent in the main or game menus.)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="renpy.get_image_load_log">
+<tt class="descclassname">renpy.</tt><tt class="descname">get_image_load_log</tt><big>(</big><em>age=None</em><big>)</big><a class="headerlink" href="#renpy.get_image_load_log" title="Permalink to this definition">¶</a></dt>
+<dd><p>A generator that yields a log of image loading activity. For the last 100
+image loads, this returns:</p>
+<ul class="simple">
+<li>The time the image was loaded (in seconds since the epoch).</li>
+<li>The filename of the image that was loaded.</li>
+<li>A boolean that is true if the image was preloaded, and false if the
+game stalled to load it.</li>
+</ul>
+<p>The entries are ordered from newest to oldest.</p>
+<dl class="docutils">
+<dt><cite>age</cite></dt>
+<dd>If not None, only images that have been loaded in the past <cite>age</cite>
+seconds are included.</dd>
+</dl>
+<p>The image load log is only kept if config.developer = True.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="renpy.get_physical_size">
+<tt class="descclassname">renpy.</tt><tt class="descname">get_physical_size</tt><big>(</big><big>)</big><a class="headerlink" href="#renpy.get_physical_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the size of the physical window.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="renpy.get_renderer_info">
+<tt class="descclassname">renpy.</tt><tt class="descname">get_renderer_info</tt><big>(</big><big>)</big><a class="headerlink" href="#renpy.get_renderer_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary, giving information about the renderer Ren'Py is
+currently using. The dictionary has one required key:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">&quot;renderer&quot;</span></tt></dt>
+<dd>One of <tt class="docutils literal"><span class="pre">&quot;gl&quot;</span></tt> or <tt class="docutils literal"><span class="pre">&quot;sw&quot;</span></tt>, corresponding to the OpenGL and
+software renderers, respectively.</dd>
+<dt><tt class="docutils literal"><span class="pre">&quot;resizable&quot;</span></tt></dt>
+<dd>True if and only if the window is resizable.</dd>
+<dt><tt class="docutils literal"><span class="pre">&quot;additive&quot;</span></tt></dt>
+<dd>True if and only if the renderer supports additive blending.</dd>
+</dl>
+<p>Other, renderer-specific, keys may also exist. The dictionary should
+be treated as immutable. This should only be called once the display
+has been started (that is, after the init code is finished).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="renpy.get_say_attributes">
+<tt class="descclassname">renpy.</tt><tt class="descname">get_say_attributes</tt><big>(</big><big>)</big><a class="headerlink" href="#renpy.get_say_attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the attributes associated with the current say statement, or
+None if no attributes are associated with this statement.</p>
+<p>This is only valid when executing or predicting a say statement.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="renpy.get_side_image">
+<tt class="descclassname">renpy.</tt><tt class="descname">get_side_image</tt><big>(</big><em>prefix_tag</em>, <em>image_tag=None</em>, <em>not_showing=True</em>, <em>layer='master'</em><big>)</big><a class="headerlink" href="#renpy.get_side_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>This attempts to find an image to show as the side image.</p>
+<p>It begins by determining a set of image attributes. If <cite>image_tag</cite> is
+given, it gets the image attributes from the tag. Otherwise, it gets
+them from the currently showing character.</p>
+<p>It then looks up an image with the tag <cite>prefix_tag</cite> and those attributes,
+and returns it if it exists.</p>
+<p>If not_showing is True, this only returns a side image if the image the
+attributes are taken from is not on the screen.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="renpy.image_size">
+<tt class="descclassname">renpy.</tt><tt class="descname">image_size</tt><big>(</big><em>im</em><big>)</big><a class="headerlink" href="#renpy.image_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an image manipulator, loads it and returns a (<tt class="docutils literal"><span class="pre">width</span></tt>,
+<tt class="docutils literal"><span class="pre">height</span></tt>) tuple giving its size.</p>
+<p>This reads the image in from disk and decompresses it, without
+using the image cache. This can be slow.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="renpy.list_files">
+<tt class="descclassname">renpy.</tt><tt class="descname">list_files</tt><big>(</big><em>common=False</em><big>)</big><a class="headerlink" href="#renpy.list_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists the files in the game directory and archive files. Returns
+a list of files, with / as the directory separator.</p>
+<dl class="docutils">
+<dt><cite>common</cite></dt>
+<dd>If true, files in the common directory are included in the
+listing.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="renpy.notify">
+<tt class="descclassname">renpy.</tt><tt class="descname">notify</tt><big>(</big><em>message</em><big>)</big><a class="headerlink" href="#renpy.notify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Causes Ren'Py to display the <cite>message</cite> using the notify screen. By
+default, this will cause the message to be dissolved in, displayed
+for two seconds, and dissolved out again.</p>
+<p>This is useful for actions that otherwise wouldn't produce feedback,
+like screenshots or quicksaves.</p>
+<p>Only one notification is displayed at a time. If a second notification
+is displayed, the first notification is replaced.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="renpy.rollback">
+<tt class="descclassname">renpy.</tt><tt class="descname">rollback</tt><big>(</big><em>force=False</em>, <em>checkpoints=1</em>, <em>defer=False</em>, <em>greedy=True</em>, <em>label=None</em><big>)</big><a class="headerlink" href="#renpy.rollback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rolls the state of the game back to the last checkpoint.</p>
+<dl class="docutils">
+<dt><cite>force</cite></dt>
+<dd>If true, the rollback will occur in all circumstances. Otherwise,
+the rollback will only occur if rollback is enabled in the store,
+context, and config.</dd>
+<dt><cite>checkpoints</cite></dt>
+<dd>Ren'Py will roll back through this many calls to renpy.checkpoint. It
+will roll back as far as it can, subject to this condition.</dd>
+<dt><cite>defer</cite></dt>
+<dd>If true, the call will be deferred until code from the main context is
+executed.</dd>
+<dt><cite>greedy</cite></dt>
+<dd>If true, rollback will occur just before the previous checkpoint.
+If false, rollback occurs to just before the current checkpoint.</dd>
+<dt><cite>label</cite></dt>
+<dd>If not None, a label that is called when rollback completes.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="renpy.set_physical_size">
+<tt class="descclassname">renpy.</tt><tt class="descname">set_physical_size</tt><big>(</big><em>size</em><big>)</big><a class="headerlink" href="#renpy.set_physical_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempts to set the size of the physical window to <cite>size</cite>. This has the
+side effect of taking the screen out of fullscreen mode.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="renpy.vibrate">
+<tt class="descclassname">renpy.</tt><tt class="descname">vibrate</tt><big>(</big><em>duration</em><big>)</big><a class="headerlink" href="#renpy.vibrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Causes the device to vibrate for <cite>duration</cite> seconds. Currently, this
+is only supported on Android.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="renpy.music.register_channel">
+<tt class="descclassname">renpy.music.</tt><tt class="descname">register_channel</tt><big>(</big><em>name</em>, <em>mixer=None</em>, <em>loop=None</em>, <em>stop_on_mute=True</em>, <em>tight=False</em>, <em>file_prefix=''</em>, <em>file_suffix=''</em>, <em>buffer_queue=True</em><big>)</big><a class="headerlink" href="#renpy.music.register_channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>This registers a new audio channel named <cite>name</cite>. Audio can then be
+played on the channel by supplying the channel name to the play or
+queue statements.</p>
+<dl class="docutils">
+<dt><cite>mixer</cite></dt>
+<dd>The name of the mixer the channel uses. By default, Ren'Py
+knows about the &quot;music&quot;, &quot;sfx&quot;, and &quot;voice&quot; mixers. Using
+other names is possible, but may require changing the
+preferences screens.</dd>
+<dt><cite>loop</cite></dt>
+<dd>If true, sounds on this channel loop by default.</dd>
+<dt><cite>stop_on_mute</cite></dt>
+<dd>If true, music on the channel is stopped when the channel is muted.</dd>
+<dt><cite>tight</cite></dt>
+<dd>If true, sounds will loop even when fadeout is occuring. This should
+be set to True for a sound effects or seamless music channel, and False
+if the music fades out on its own.</dd>
+<dt><cite>file_prefix</cite></dt>
+<dd>A prefix that is prepended to the filenames of the sound files being
+played on this channel.</dd>
+<dt><cite>file_suffix</cite></dt>
+<dd>A suffix that is appended to the filenames of the sound files being
+played on this channel.</dd>
+<dt><cite>buffer_queue</cite></dt>
+<dd>Should we buffer the first second or so of a queued file? This should
+be True for audio, and False for movie playback.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="layout.yesno_screen">
+<tt class="descclassname">layout.</tt><tt class="descname">yesno_screen</tt><big>(</big><em>message</em>, <em>yes=None</em>, <em>no=None</em><big>)</big><a class="headerlink" href="#layout.yesno_screen" title="Permalink to this definition">¶</a></dt>
+<dd><p>This causes the a yes/no prompt screen with the given message
+to be displayed. The screen will be hidden when the user hits
+yes or no.</p>
+<dl class="docutils">
+<dt><cite>message</cite></dt>
+<dd>The message that will be displayed.</dd>
+<dt><cite>yes</cite></dt>
+<dd>An action that is run when the user chooses yes.</dd>
+<dt><cite>no</cite></dt>
+<dd>An action that is run when the user chooses no.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="updater.fsencode">
+<tt class="descclassname">updater.</tt><tt class="descname">fsencode</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#updater.fsencode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts s from unicode to the filesystem encoding.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="build.html" title="Building Distributions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="udd.html" title="Creator-Defined Displayables"
+             >previous</a> |</li>
+
+        <li> <img src="_static/logo.png" width=19 height=21 align=center> 
+        <li> <a href="http://www.renpy.org/">Ren'Py Home</a> |
+        <li><a href="index.html">Ren&#39;Py Documentation</a></li> 
+      </ul>
+    </div>
+
+
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript"> 
+	  google.load('search', '1', {language : 'en' });
+	  google.setOnLoadCallback(function() {
+	    var customSearchControl = new google.search.CustomSearchControl('012476843541036121001:gx3sqkoaxkm');
+	    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+	    var options = new google.search.DrawOptions();
+	    options.enableSearchboxOnly("http://www.google.com/cse?cx=012476843541036121001:gx3sqkoaxkm");
+	    customSearchControl.draw('cse-search-form', options);
+	  }, true);
+	</script>
+
+  </body>
+</html>

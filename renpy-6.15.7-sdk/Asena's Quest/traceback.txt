@@ -1,0 +1,26 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 141, in script
+  File "game/script.rpy", line 141, in python
+error: No video mode large enough for 1408x960
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "E:\renpy-6.15.7-sdk\renpy\execution.py", line 288, in run
+    node.execute()
+  File "E:\renpy-6.15.7-sdk\renpy\ast.py", line 718, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "E:\renpy-6.15.7-sdk\renpy\python.py", line 1297, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "game/script.rpy", line 141, in <module>
+    $ l1_complete = level_1.main()
+  File "level_1.py", line 254, in main
+  File "renpygame/display.py", line 48, in set_mode
+    return pygame.display.set_mode(size, flags, depth)
+error: No video mode large enough for 1408x960
+
+Windows-7-6.1.7601-SP1
+Ren'Py 6.15.7.374
+A Ren'Py Game 0.0

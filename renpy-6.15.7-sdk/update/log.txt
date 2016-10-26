@@ -1,0 +1,1 @@
+running ['C:\\Users\\cgames6\\Desktop\\renpy-6.15.7-sdk\\lib\\windows-i686\\zsync.exe', '-o', 'C:\\Users\\cgames6\\Desktop\\renpy-6.15.7-sdk\\update\\jedit.update.new', '-k', 'C:\\Users\\cgames6\\Desktop\\renpy-6.15.7-sdk\\update\\jedit.zsync', '-i', 'C:\\Users\\cgames6\\Desktop\\renpy-6.15.7-sdk\\update\\jedit.update', 'http://update.renpy.org/6.15.7/renpy-6.15.7-jedit.zsync']

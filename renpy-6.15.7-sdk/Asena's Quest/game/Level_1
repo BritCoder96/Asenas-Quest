@@ -1,0 +1,297 @@
+#import statements
+import pygame, sys, math, random
+
+#class definitions
+class Sprite(object):
+	def __init__(self,surf):
+		self.surf = surf
+		self.rect = self.surf.get_rect()
+
+class Asena(Sprite):
+    def __init__(self, surf):
+    Sprite.__init__(self, surf)
+    self.rect.width = 520
+    self.rect.height = 20
+    self.direction = 960# 0 == up, 1 == down, 2 == left, 3 == right
+    self.speed = 200 # px/sec
+    self.frame = 0
+    self.framerate = 8
+    self.framebuffer = 0
+    self.is_moving = [False, False, False]
+    self.resting = False
+    self.dy = 0
+    
+    def draw(self):
+    screen.blit(self.surf, self.rect, pygame.Rect(self.frame*  50, self.direction*50, 50, 50))
+    
+    def update(self, dt, game):
+        if self.is_moving == [False, False, False]:
+            self.frame = 0
+        else:
+            self.framebuffer += elapsed
+            if self.framebuffer >= 1000.0/self.framerate:
+                self.framebuffer = 0
+                self.frame += 1
+                if self.frame > 3:
+                    self.frame = 0
+	
+        if self.is_moving[0] == True:
+            self.direction = 0
+            self.rect.move_ip(0, -elapsed*self.speed / 1000.0)
+        if self.is_moving[1] == True:
+            self.direction = 2
+            self.rect.move_ip(0, elapsed*self.speed / 1000.0)
+        if self.is_moving[2] == True:
+            self.direction = 3
+            self.rect.move_ip(-elapsed*self.speed / 1000.0, 0)
+	
+	#process input
+	for event in pygame.event.get():
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_ESCAPE:
+				sys.exit()
+			elif event.key == pygame.K_w:
+				arrow.is_moving[0] = True
+			elif event.key == pygame.K_s:
+				if key.rect.colliderect(asena) == True:
+                    has_key = True
+                if door.colliderect(asena) == True:
+                    door_open = True
+			elif event.key == pygame.K_a:
+				arrow.is_moving[1] = True	
+			elif event.key == pygame.K_d:
+				arrow.is_moving[2] = True
+			elif
+			 self.dy = -500
+
+        # add gravity on to the currect vertical speed
+        self.dy = min(400, self.dy + 40)
+
+        # now add the distance travelled for this update to the player position
+        self.rect.y += self.dy * dt
+
+        # collide the player with the map's blockers
+        new = self.rect
+		if event.type == pygame.KEYUP:
+			if event.key == pygame.K_w:
+				arrow.is_moving[0] = False
+			elif event.key == pygame.K_a:
+				arrow.is_moving[1] = False	
+			elif event.key == pygame.K_d:
+				arrow.is_moving[2] = False
+
+        # add gravity on to the currect vertical speed
+        self.dy = min(400, self.dy + 40)
+
+        # now add the distance travelled for this update to the player position
+        self.rect.y += self.dy * dt
+
+        # collide the player with the map's blockers
+        new = self.rect
+        # reset the resting trigger; if we are at rest it'll be set again in the
+        # loop; this prevents the player from being able to jump if they walk
+        # off the edge of a platform
+        self.resting = False
+        # look up the tilemap triggers layer for all cells marked "blockers"
+        for cell in game.tilemap.layers['triggers'].collide(new, 'blockers'):
+            # find the actual value of the blockers property
+            blockers = cell['blockers']
+            # now for each side set in the blocker check for collision; only
+            # collide if we transition through the blocker side (to avoid
+            # false-positives) and align the player with the side collided to
+            # make things neater
+            if 'l' in blockers and last.right <= cell.left and new.right > cell.left:
+                new.right = cell.left
+            if 'r' in blockers and last.left >= cell.right and new.left < cell.right:
+                new.left = cell.right
+            if 't' in blockers and last.bottom <= cell.top and new.bottom > cell.top:
+                self.resting = True
+                new.bottom = cell.top
+                # reset the vertical speed if we land or hit the roof; this
+                # avoids strange additional vertical speed if there's a
+                # collision and the player then leaves the platform
+                self.dy = 0
+            if 'b' in blockers and last.top >= cell.bottom and new.top < cell.bottom:
+                new.top = cell.bottom
+                self.dy = 0
+
+        self.rect.clamp_ip(screen_rect) 
+        arrow_rect = arrow.rect
+
+class Arrow(Sprite):
+    
+    def __init__(self, surf):
+        Sprite.__init__(self, surf)
+        self.rect.width = 64
+        self.rect.height = 20
+        self.direction = 0
+        self.speed = 200
+        self.frame = 0
+        self.framerate = 8
+        self.framebuffer = 0
+        
+    def draw(self):
+        screen.blit(self.surf, self.rect, pygame.Rect(self.frame*50, self.direction*50, 50, 50))
+
+    def update(self):
+        self.framebuffer += elapsed
+            if self.framebuffer >= 1000.0/self.framerate:
+                self.framebuffer = 0
+                self.frame += 1
+                if self.frame > 3:
+                    self.frame = 0
+        
+        
+class Key(Sprite):
+    def __init__(self, surf):
+        Sprite.__init__(self, surf)
+        self.rect.width = 520
+        self.rect.height = 20
+        self.direction = 0
+        self.speed = 200
+        self.frame = 0
+        self.framerate = 8
+        self.framebuffer = 0
+        
+    def draw(self):
+        screen.blit(self.surf, self.rect, pygame.Rect(self.frame*50, self.direction*50, 50, 50))
+
+class Health(Sprite):
+    def __init__(self, xy):
+        pygame.sprite.Sprite.__init__(self)
+        self.xy = xy   
+        self.font = pygame.font.Font(None, 16)  
+        self.reRender()
+        self.hp = 20
+        
+    def hp_loss(self):
+        self.hp -= 1
+        
+    def update(self):
+        self.image = self.font.render("%d" %(self.hp), True, (0, 0, 0))
+        self.rect = self.image.get_rect()
+        self.rect.center = self.xy
+
+        
+#create initial objects
+pygame.init()
+screen = pygame.display.set_mode((1408,960))
+screen_rect = screen.get_rect()
+timer = pygame.time.get_ticks()
+elapsed = 0
+asena = asena(pygame.image.load("").convert_alpha())
+
+background = Sprite(pygame.image.load("Stone BG").convert_alpha())
+platform = Sprite(pygame.image.load("Stone Platform").convert_alpha())
+spikes = Sprite(pygame.image.load("Spikes").convert_alpha())
+fire = Sprite(pygame.image.load("lava").convert_alpha())
+key = Sprite(pygame.image.load("Key").convert_alpha())
+door = Sprite(pygame.image.load("Door").convert_alpha())
+level1_file = open("Level1")
+level1 = level1_file.readlines()
+level1 = [line.strip() for line in level1]
+master_clock = pygame.time.Clock()
+
+screen.blit(asena.surf, asena.rect, pygame.Rect(asenaframe*50, 1408, 960, 50))
+while asena.hp > 0 and door_open == False:
+	#tick the clock
+	master_clock.tick(100)
+	elapsed = pygame.time.get_ticks() - timer
+	timer = pygame.time.get_ticks()
+	
+    platform_list = []
+    spikes_list = []
+    fire_list = []
+    arrow_list = []
+
+
+		
+	
+    #draw
+    screen.fill((0,0,0))
+    for row in range(len(level1)):
+        for column in range(len(level1[0])):
+            if level1[row][column] == 'p':
+                screen.blit(platform.surf, pygame.Rect(column*64, row*64, 64, 64))
+                platform_list.append(pygame.Rect(column*64, row*64, 64, 64))
+            elif level1[row][column] == 's':
+                screen.blit.(spikes.surf, pygame.Rect(column*64, row*64, 64, 64))
+                spike_list.append(pygame.Rect(column*64, row*64, 64, 64))
+            elif  level1[row][column] == 'f':
+                screen.blit.(fire.surf, pygame.Rect(column*64, row*64, 64, 64))
+                fire_list.append(pygame.Rect(column*64, row*64, 64, 64))
+            elif level1[row][column] == 'a':
+                for elapsed in range(3):
+                    screen.blit.(arrow.surf, pygame.Rect(column*64, row*64, 64, 64))
+                    arrow.rect.move_ip(-elapsed*arrow.speed / 1000.0, 0)
+                    arrow.draw()
+                    arrow_list.append(pygame.Rect(column*64, row*64, 64, 64)
+           elif level1[row][column] == 'k':
+                if has_key = False:
+                    key.draw()
+           elif level1[row][column] == 'd':
+               screen.blit.(door.surf, pygame.Rect(column*64, row*64, 64, 64))
+
+    screen.blit("Stone BG")       
+    
+    for collide_platform_list in range(len(water_list)):
+        if asena.rect.colliderect(platform_list[collide_platform_list]) == True:
+            if asena.direction == 0:
+                asena.is_moving[0] = False
+            if asena.direction == 2:
+                asena.is_moving[1] = False
+            if asena.direction == 3:
+                asena.is_moving[2] = False
+    
+    for collide_spike_list in range(len(spike_list)):
+        if asena.rect.colliderect(spike_list[collide_spike_list]) == True:
+            asena.hp_loss()
+            if asena.direction == 0:
+                asena.is_moving[0] = False
+            if asena.direction == 1:
+                asena.is_moving[1] = False
+            if asena.direction == 2:
+                asena.is_moving[2] = False
+
+    for collide_fire_list in range(len(fire_list)):
+        if asena.rect.colliderect(fire_list[collide_fire_list]) == True:
+            asena.hp_loss()
+            if asena.direction == 0:
+                asena.is_moving[0] = False
+            if asena.direction == 1:
+                asena.is_moving[1] = False
+            if asena.direction == 2:
+                asena.is_moving[2] = False
+
+
+     for collide_arrow_list in range(len(arrow_list)):
+        if asena.rect.colliderect(arrow_list[collide_arrow_list]) == True:
+            asena.hp_loss()
+            if asena.direction == 0:
+                asena.is_moving[0] = False
+            if asena.direction == 1:
+                asena.is_moving[1] = False
+            if asena.direction == 2:
+                asena.is_moving[2] = False
+
+     for collide_arrow_list in range(len(arrow_list)):
+        if asena.rect.colliderect(arrow_list[collide_arrow_list]) == True:
+            asena.hp_loss()
+            if asena.direction == 0:
+                asena.is_moving[0] = False
+            if asena.direction == 1:
+                asena.is_moving[1] = False
+            if asena.direction == 2:
+                asena.is_moving[2] = False
+       
+     for elapsed in range(60):
+        asena.hp_loss()
+        
+        asena.update()
+        asena.draw()
+
+            
+        timer = pygame.time.get_ticks()
+        
+        #flip buffers
+        pygame.display.flip()
